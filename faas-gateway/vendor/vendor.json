@@ -1,0 +1,11 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"path": "faas/factorial/cmd/factoriald",
+			"revision": ""
+		}
+	],
+	"rootPath": "faas/faas-gateway"
+}

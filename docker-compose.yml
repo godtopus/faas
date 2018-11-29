@@ -1,0 +1,31 @@
+version: "3.0"
+services:
+  faas-gateway:
+    build:
+      context: ./faas-gateway
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./faas-gateway:/go/src/faas/faas-gateway
+    tty: true
+
+  factorial:
+    build:
+      context: ./factorial
+    labels:
+      - "faas.name=factorial"
+      - "faas.port=8080"
+    volumes:
+      - ./factorial:/go/src/faas/factorial
+    tty: true
+
+  echo:
+    build:
+      context: ./echo
+    labels:
+      - "faas.name=echo"
+      - "faas.port=8080"
+    volumes:
+      - ./echo:/go/src/faas/echo
+    tty: true
