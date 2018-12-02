@@ -1,7 +1,8 @@
-package factoriald
+package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -11,8 +12,8 @@ type Response struct {
 }
 
 func main() {
-	http.HandleFunc("/factorial", factorial)
-	http.ListenAndServe(":8080", nil)
+	http.HandleFunc("/lambda/factorial", factorial)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func factorial(w http.ResponseWriter, r *http.Request) {

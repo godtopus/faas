@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 )
 
@@ -10,8 +11,8 @@ type Response struct {
 }
 
 func main() {
-	http.HandleFunc("/echo", echo)
-	http.ListenAndServe(":8080", nil)
+	http.HandleFunc("/lambda/echo", echo)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func echo(w http.ResponseWriter, r *http.Request) {
